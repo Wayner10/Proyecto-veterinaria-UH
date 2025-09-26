@@ -1,0 +1,264 @@
+/* ===== Variables & Reset ===== */
+:root{
+  --bg-page: #f3f5f7;
+  --card-bg: rgba(20, 24, 28, 0.55); /* capa oscura sobre imagen */
+  --overlay: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.4));
+  --text-on-media: #fff;
+
+  --input-bg: #fff;
+  --input-bd: #d7dbe0;
+  --input-bd-focus: #3b82f6;
+  --input-shadow-focus: 0 0 0 4px rgba(59,130,246,.15);
+
+  --btn-bd: #2563eb;
+  --btn-bg: #2563eb;
+  --btn-bg-hover: #1d4ed8;
+
+  --error: #b00020;
+  --success: #1b8f44;
+
+  --radius-lg: 14px;
+  --radius-sm: 10px;
+  --shadow-card: 0 10px 30px rgba(16,24,40,.18);
+}
+
+/* Mejora tipografía y box-model */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  background: var(--bg-page);
+  color:#0f172a;
+  line-height:1.4;
+}
+
+/* ===== Lienzo centrado ===== */
+body{
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+
+/* ===== Tarjeta de login con imagen de fondo ===== */
+/* Puedes reemplazar la imagen desde CSS o con una variable inline:
+   <div class="login-container" style="--login-bg:url('<?= base_url('images/tu-fondo.jpg') ?>')">
+*/
+.login-container{
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 26px 26px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--text-on-media);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Fondo de la tarjeta (imagen + overlay) */
+.login-container::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    var(--overlay),
+    var(--login-bg, url('../uploads/sandy-millar-Vbztfmud9_E-unsplash.jpg')) center/cover no-repeat;
+  z-index:-2;
+  filter: saturate(1) contrast(.95);
+}
+
+/* Capa de desenfoque suave para "glass" */
+.login-container::after{
+  content:"";
+  position:absolute; inset:0;
+  backdrop-filter: blur(1.5px);
+  background: var(--card-bg);
+  z-index:-1;
+}
+
+/* ===== Encabezado ===== */
+.login-container h2{
+  margin: 4px 0 18px;
+  text-align:center;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* ===== Mensajes ===== */
+.alert{
+  background: rgba(255,255,255,.9);
+  color:#0f172a;
+  border-left: 6px solid transparent;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.alert-error{
+  border-left-color: var(--error);
+}
+.alert-success{
+  border-left-color: var(--success);
+}
+
+/* Normalizar listas dentro de errores CI */
+.alert ul{ margin:8px 0 0 18px; }
+.alert li{ margin:4px 0; }
+
+/* ===== Formulario ===== */
+form{
+  display:grid;
+  gap: 14px;
+}
+
+.form-group{
+  display:grid;
+  gap:6px;
+}
+
+label{
+  font-size: 14px;
+  font-weight: 600;
+  color: #e6edf6; /* texto claro sobre imagen */
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+input[type="email"],
+input[type="password"]{
+  appearance:none;
+  width:100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  border:1px solid var(--input-bd);
+  background: var(--input-bg);
+  color:#0f172a;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .06s ease;
+  outline: none;
+}
+
+input::placeholder{ color:#9aa4b2; }
+
+input:hover{
+  border-color:#c5cbd3;
+}
+
+input:focus-visible{
+  border-color: var(--input-bd-focus);
+  box-shadow: var(--input-shadow-focus);
+  transform: translateY(-1px);
+}
+
+/* ===== Botón ===== */
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border:1px solid var(--btn-bd);
+  background: var(--btn-bg);
+  color:#fff;
+  font-weight: 700;
+  letter-spacing:.2px;
+  cursor:pointer;
+  transition: transform .06s ease, background-color .18s ease, box-shadow .18s ease;
+  box-shadow: 0 6px 16px rgba(37,99,235,.25);
+}
+
+.btn-primary:hover{
+  background: var(--btn-bg-hover);
+}
+
+.btn-primary:active{
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(37,99,235,.25);
+}
+
+.btn-primary:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59,130,246,.25);
+}
+
+/* --- Ajustes finos sobre tu diseño actual --- */
+
+/* 1) Más contraste en la imagen de fondo */
+.login-container::before{
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.55)),
+    var(--login-bg, url('../images/login-bg.jpg')) center/cover no-repeat;
+  filter: saturate(1.05) brightness(.95);
+}
+
+/* 2) Tarjeta con glass sutil + borde */
+.login-container{
+  padding: 32px 28px 26px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;              /* igual al look del screenshot */
+  box-shadow: 0 18px 40px rgba(16,24,40,.18);
+}
+
+/* 3) Título con mejor jerarquía */
+.login-container h2{
+  margin: 0 0 20px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: .3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+/* 4) Labels más nítidos y alineados a una rejilla */
+.form-group{ gap: 8px; }
+label{
+  color: #f3f6fb;
+  font-weight: 650;
+}
+
+/* 5) Inputs con sombra y foco accesible */
+input[type="email"], input[type="password"]{
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(16,24,40,.02);
+}
+input:focus-visible{
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59,130,246,.18);
+  transform: translateY(-1px);
+}
+
+/* 6) Botón: mejor “weight” visual y feedback */
+.btn-primary{
+  height: 44px;
+  border-radius: 12px;
+  font-weight: 750;
+  box-shadow: 0 8px 20px rgba(37,99,235,.28);
+}
+.btn-primary:hover{ transform: translateY(-1px); }
+.btn-primary:active{ transform: translateY(0); }
+
+/* 7) Alertas: más compactas */
+.alert{
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border-left-width: 7px;
+}
+
+/* 8) Responsive: acolchado menor en móviles */
+@media (max-width: 480px){
+  .login-container{ padding: 22px 18px 18px; }
+}
+
+
+/* ===== Responsivo ===== */
+@media (max-width: 480px){
+  .login-container{
+    padding: 22px 18px 18px;
+    border-radius: 12px;
+  }
+}
+
+/* ===== Accesibilidad extra ===== */
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; }
+}

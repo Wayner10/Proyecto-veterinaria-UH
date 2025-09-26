@@ -1,0 +1,301 @@
+/* ===== Paleta A: Clínica & Calm ===== */
+:root{
+  --brand:#0EA5A4;
+  --brand-700:#0F766E;
+  --secondary:#3B82F6;
+  --accent:#F59E0B;
+
+  --bg:#F8FAFC;
+  --surface:#FFFFFF;
+  --text:#0F172A;
+  --text2:#FFFFFF;
+  --muted:#64748B;
+  --border:#E5E7EB;
+
+  --success:#16A34A;
+  --danger:#DC2626;
+  --info:#2563EB;
+}
+
+/* ===== Layout ===== */
+body { background: var(--bg); color: var(--text); }
+
+.factura-wrapper{
+  max-width: 980px;
+  margin: 32px auto 60px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.06);
+  padding: 24px;
+}
+
+/* ===== Header ===== */
+.factura-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+/* Detalles visibles (antes estaban en blanco) */
+.titulo{
+  margin: 0 0 6px 0;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--text);              /* <- antes var(--text2) */
+}
+.factura-header p{
+  margin: 0;
+  color: var(--muted);             /* <- antes var(--text2) */
+}
+.cliente{ margin: 0 0 4px 0; }
+.cliente strong { color: var(--text); font-weight: 700; }
+
+/* Lado derecho: estado + total */
+.header-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.total-grande{
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: .2px;
+}
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+.badge-activa{
+  background: color-mix(in srgb, var(--success) 14%, #fff);
+  color: #166534;
+  border-color: color-mix(in srgb, var(--success) 35%, #fff);
+}
+.badge-cancelada{
+  background: color-mix(in srgb, var(--danger) 14%, #fff);
+  color: #7F1D1D;
+  border-color: color-mix(in srgb, var(--danger) 35%, #fff);
+}
+
+/* Separador extra (cuando uses <hr>) */
+hr{
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 18px 0 16px;
+}
+
+/* ===== Títulos secundarios ===== */
+h3{
+  margin: 8px 0 10px;
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* ===== Tabla de detalles ===== */
+.tabla-detalle{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.tabla-detalle thead th{
+  background: var(--bg);
+  color: var(--muted);
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px;
+}
+.tabla-detalle tbody td{
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.tabla-detalle tbody tr:hover{
+  background: color-mix(in srgb, var(--brand) 6%, #fff);
+}
+/* Números alineados a la derecha */
+.tabla-detalle td:nth-child(2),
+.tabla-detalle td:nth-child(3),
+.tabla-detalle td:nth-child(4){
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Footer totales */
+.tabla-detalle tfoot td{
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
+}
+.tfoot-label{
+  text-align: right;
+  color: var(--muted);
+  font-weight: 600;
+}
+.tfoot-value{
+  text-align: right;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+.tfoot-total{
+  background: color-mix(in srgb, var(--brand) 8%, #fff);
+  color: var(--text);
+  border-top: 1px solid color-mix(in srgb, var(--brand) 28%, #fff);
+  font-size: 16px;
+}
+
+/* ===== Alertas ===== */
+.alerta{
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+}
+.alerta.advertencia{
+  background: color-mix(in srgb, var(--accent) 14%, #fff);
+  border-color: color-mix(in srgb, var(--accent) 35%, #fff);
+  color: #7C2D12;
+}
+
+/* ===== Botones ===== */
+.botones{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+.btn-volver{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .05s ease, box-shadow .2s ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,.05);
+}
+.btn-volver:hover{ background: var(--brand-700); }
+.btn-volver:active{ transform: translateY(1px); }
+.btn-volver:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+/* Variante secundaria */
+.btn-volver.secondary{
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-volver.secondary:hover{ background: var(--bg); }
+
+/* ===== Responsivo ===== */
+@media (max-width: 720px){
+  .factura-wrapper{ margin: 16px; padding: 18px; }
+  .factura-header{ flex-direction: column; align-items: stretch; gap: 12px; }
+  .header-right{ align-items: flex-start; }
+  .total-grande{ font-size: 24px; }
+  .tabla-detalle thead th,
+  .tabla-detalle tbody td,
+  .tabla-detalle tfoot td{ padding: 10px 12px; }
+}
+
+/* ===== Impresión ===== */
+@media print {
+  /* Respetar colores de fondo y reset de márgenes */
+  html, body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ocultar TODO por defecto */
+  body * { display: none !important; }
+
+  /* Mostrar solo la factura */
+  .factura-wrapper,
+  .factura-wrapper * {
+    display: revert !important;     /* vuelve al display natural */
+    visibility: visible !important;
+  }
+  .factura-wrapper {
+    position: static !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    width: 100% !important;
+    max-width: none !important;
+    background: #fff !important;
+    border: 1px solid #E5E7EB !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Header legible en papel */
+  .factura-header { 
+    display: flex !important;
+    border-bottom: 1px solid #E5E7EB !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  .titulo, .factura-header p { color: #0F172A !important; }
+
+  /* Tabla y totales */
+  .tabla-detalle {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    border: 1px solid #E5E7EB !important;
+    overflow: hidden !important;
+  }
+  .tabla-detalle thead th {
+    background: #F8FAFC !important;
+    color: #64748B !important;
+    border-bottom: 1px solid #E5E7EB !important;
+    padding: 12px 14px !important;
+  }
+  .tabla-detalle td {
+    border-bottom: 1px solid #E5E7EB !important;
+    color: #0F172A !important;
+    padding: 12px 14px !important;
+  }
+  .tfoot-total {
+    background: #E8F4F8 !important;
+    border-top: 1px solid #86D1D1 !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+  }
+
+  /* Evitar cortes feos */
+  table, tr, td, th { page-break-inside: avoid !important; }
+  h2, h3, .factura-header { page-break-after: avoid !important; }
+
+  @page {
+    size: A4;                 /* usa 'letter' si prefieres */
+    margin: 12mm 10mm;
+  }
+}

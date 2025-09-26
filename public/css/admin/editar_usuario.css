@@ -1,0 +1,172 @@
+/* ===== Paleta A: Clínica & Calm (teal) ===== */
+:root{
+  --brand:#0EA5A4;      /* primario */
+  --brand-700:#0F766E;  /* hover primario */
+  --secondary:#3B82F6;  /* foco / links */
+  --accent:#F59E0B;     /* acentos */
+
+  --bg:#F8FAFC;         /* fondo app */
+  --surface:#FFFFFF;    /* tarjetas / formularios */
+  --text:#0F172A;       /* texto principal */
+  --muted:#64748B;      /* texto secundario */
+  --border:#E5E7EB;     /* bordes suaves */
+
+  --success:#16A34A;
+  --warning:#F59E0B;
+  --danger:#DC2626;
+  --info:#2563EB;
+}
+
+/* ===== Wrapper / Título ===== */
+.form-wrapper{
+  max-width: 760px;
+  margin: 0 auto 40px;
+  padding: 0 12px;
+}
+.form-wrapper h2{
+  color: var(--text);
+  font-size: 24px;
+  margin: 14px 0 18px;
+  line-height: 1.2;
+}
+
+/* ===== Mensajes (flash) ===== */
+.msg{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  background: var(--surface);
+  color: var(--text);
+}
+.msg-error{
+  background: color-mix(in srgb, var(--danger) 10%, #fff);
+  border-color: color-mix(in srgb, var(--danger) 35%, #fff);
+  color: #7F1D1D;
+}
+.msg-success{
+  background: color-mix(in srgb, var(--success) 10%, #fff);
+  border-color: color-mix(in srgb, var(--success) 35%, #fff);
+  color: #14532D;
+}
+.msg-info{
+  background: color-mix(in srgb, var(--info) 10%, #fff);
+  border-color: color-mix(in srgb, var(--info) 35%, #fff);
+  color: #1E3A8A;
+}
+
+/* ===== Formulario como tarjeta ===== */
+.form-wrapper form{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  padding: 24px;
+}
+
+/* Grupos */
+.form-group{ margin-bottom: 16px; }
+.form-group label{
+  display:block;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* Inputs / Selects */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select{
+  width: 100%;
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+  box-sizing: border-box;
+}
+.form-group select{ appearance: none; background-image: none; }
+
+.form-group input::placeholder{ color: var(--muted); }
+
+.form-group input:focus-visible,
+.form-group select:focus-visible{
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+
+/* Errores de validación (CodeIgniter showError) */
+.form-group .error,
+.form-group .text-danger,
+.form-group .field-error{
+  display:block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+}
+.is-invalid{
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 20%, transparent) !important;
+}
+
+/* ===== Botones ===== */
+.btn-guardar,
+.btn-cancelar{
+  display: inline-block;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .05s ease, box-shadow .2s ease, color .2s ease, border-color .2s ease;
+}
+
+/* Primario */
+.btn-guardar{
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 2px 0 rgba(0,0,0,.05);
+}
+.btn-guardar:hover{ background: var(--brand-700); }
+.btn-guardar:active{ transform: translateY(1px); }
+.btn-guardar:focus-visible{
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+
+/* Secundario / Cancelar */
+.btn-cancelar{
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  margin-left: 8px;
+}
+.btn-cancelar:hover{
+  background: var(--bg);
+  border-color: color-mix(in srgb, var(--border) 70%, #000);
+}
+.btn-cancelar:focus-visible{
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 25%, transparent);
+}
+
+/* Responsive */
+@media (max-width: 640px){
+  .form-wrapper form{ padding: 16px; }
+  .form-wrapper h2{ font-size: 20px; }
+  .btn-cancelar{ margin-left: 6px; }
+}
+
+/* Selección de texto */
+::selection{
+  background: color-mix(in srgb, var(--brand) 30%, #fff);
+  color:#0b1b1a;
+}

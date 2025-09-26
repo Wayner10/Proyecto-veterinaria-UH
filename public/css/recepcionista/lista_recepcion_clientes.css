@@ -1,0 +1,62 @@
+.table-clientes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.table-clientes th, .table-clientes td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.table-clientes th {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.table-clientes tr:hover {
+    background-color: #f0f8ff;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-accion {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-desactivar {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-activar {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-accion:hover {
+    opacity: 0.85;
+    cursor: pointer;
+}

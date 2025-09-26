@@ -1,0 +1,172 @@
+/* ===== Paleta A: Clínica & Calm ===== */
+:root{
+  --brand:#0EA5A4;
+  --brand-700:#0F766E;
+  --secondary:#3B82F6;
+  --accent:#F59E0B;
+
+  --bg:#F8FAFC;
+  --surface:#FFFFFF;
+  --text:#0F172A;
+  --muted:#64748B;
+  --border:#E5E7EB;
+
+  --success:#16A34A;
+  --danger:#DC2626;
+  --info:#2563EB;
+}
+
+/* ===== Layout ===== */
+body { background: var(--bg); color: var(--text); }
+
+h2{
+  margin: 18px auto 12px;
+  max-width: 980px;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.tabla-facturas{
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto 18px;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+.tabla-facturas thead th{
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tabla-facturas tbody td{
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.tabla-facturas tbody tr:hover{
+  background: color-mix(in srgb, var(--brand) 6%, #fff);
+}
+
+/* Alineación de columnas numéricas */
+.tabla-facturas td:nth-child(3){
+  text-align: right;     /* Total */
+  white-space: nowrap;
+}
+
+/* ===== Badges de estado ===== */
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+.badge-activa{
+  background: color-mix(in srgb, var(--success) 14%, #fff);
+  color: #166534; /* verde oscuro */
+  border-color: color-mix(in srgb, var(--success) 35%, #fff);
+}
+.badge-cancelada{
+  background: color-mix(in srgb, var(--danger) 14%, #fff);
+  color: #7F1D1D; /* rojo oscuro */
+  border-color: color-mix(in srgb, var(--danger) 35%, #fff);
+}
+
+/* ===== Botones ===== */
+.btn-accion{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color .2s ease, transform .05s ease, box-shadow .2s ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,.05);
+}
+
+.btn-detalle{
+  background: var(--secondary);
+}
+.btn-detalle:hover{ background: var(--info); }
+.btn-accion:active{ transform: translateY(1px); }
+.btn-accion:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 25%, transparent);
+}
+
+/* Botón volver (primario) */
+.btn-volver{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 6px auto 28px;
+  transition: background-color .2s ease, transform .05s ease, box-shadow .2s ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,.05);
+  display: table; /* centra con margin auto */
+}
+.btn-volver:hover{ background: var(--brand-700); }
+.btn-volver:active{ transform: translateY(1px); }
+.btn-volver:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+
+/* ===== Alertas ===== */
+.alert{
+  max-width: 980px;
+  margin: 0 auto 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+}
+.alert-success{
+  background: color-mix(in srgb, var(--success) 10%, #fff);
+  border-color: color-mix(in srgb, var(--success) 35%, #fff);
+  color: #14532D;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 760px){
+  .tabla-facturas{ border-radius: 10px; }
+  .tabla-facturas thead th,
+  .tabla-facturas tbody td{ padding: 10px 12px; }
+  h2{ font-size: 20px; margin: 16px auto 10px; }
+}
+
+/* ===== Impresión opcional ===== */
+@media print{
+  body{ background: #fff; }
+  .alert, .btn-volver{ display: none !important; }
+  .tabla-facturas{ box-shadow: none; border: 1px solid #ccc; }
+}

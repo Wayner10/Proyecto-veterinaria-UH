@@ -1,0 +1,131 @@
+/* ===== Paleta A ===== */
+:root{
+  --brand:#0EA5A4;
+  --brand-700:#0F766E;
+  --secondary:#3B82F6;
+  --accent:#F59E0B;
+
+  --bg:#F8FAFC;
+  --surface:#FFFFFF;
+  --text:#0F172A;
+  --muted:#64748B;
+  --border:#E5E7EB;
+
+  --success:#16A34A;
+  --danger:#DC2626;
+  --info:#2563EB;
+}
+
+/* ===== Botones del dashboard ===== */
+#botones-recepcion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.btn-dashboard {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background-color: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-dashboard i {
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover general */
+.btn-dashboard:hover {
+    transform: translateY(-3px);
+    border-color: var(--border);
+}
+
+/* Colores específicos por categoría usando paleta */
+.btn-citas i {
+    background-color: var(--secondary);
+}
+.btn-clientes i {
+    background-color: var(--success);
+}
+.btn-mascotas i {
+    background-color: var(--accent);
+}
+.btn-facturas i {
+    background-color: var(--info);
+}
+.btn-usuarios i {
+    background-color: var(--brand);
+}
+
+/* ===== Tarjetas de estadísticas ===== */
+.dashboard-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 40px 10px;
+}
+
+.card-stat {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 250px;
+    transition: transform 0.2s ease;
+    border: 1px solid var(--border);
+}
+
+.card-stat:hover {
+    transform: translateY(-5px);
+}
+
+.card-stat i {
+    font-size: 2.2rem;
+    padding: 15px;
+    border-radius: 50%;
+    color: white;
+}
+
+/* Colores de íconos en tarjetas con paleta */
+.card-stat.blue i {
+    background-color: var(--secondary);
+}
+.card-stat.green i {
+    background-color: var(--success);
+}
+.card-stat.yellow i {
+    background-color: var(--accent);
+    color: var(--text);
+}
+.card-stat.teal i {
+    background-color: var(--brand);
+}
+
+.card-stat h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--text);
+}
+
+.card-stat p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--muted);
+}
